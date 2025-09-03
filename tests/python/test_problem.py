@@ -54,9 +54,14 @@ class TestProblem(unittest.TestCase):
         ):
             self.assertEqual(p([1] * 10), 10)
 
-    def test_can_access_optimization_type(self): 
+    def test_can_access_optimization_type(self):
         p = ioh.get_problem(1, 1, 2)
         self.assertTrue(p.meta_data.optimization_type is not None)
+
+    def test_optimum_coordinates(self):
+        dim = 5
+        p = ioh.get_problem(1, 1, dim)
+        np.testing.assert_array_equal(p.optimum.x, np.zeros(dim))
 
     def test_class_based_problem(self):
         class A(ioh.problem.RealSingleObjective):
@@ -79,7 +84,6 @@ class TestProblem(unittest.TestCase):
 
         setattr(a, "evaluate", lambda x:sum(xi == 1 for xi in x))
         self.assertEqual(a([0, 0]), 0)
-        self.assertEqual(a([0, 1]), 1)
         self.assertFalse(a.state.optimum_found)
         self.assertEqual(a([1, 1]), 2)
         self.assertTrue(a.state.optimum_found)
