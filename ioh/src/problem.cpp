@@ -70,8 +70,7 @@ public:
 
     double evaluate(const std::vector<T> &x) override
     {
-        PYBIND11_OVERRIDE_PURE(double, P, evaluate,
-                               py::array_t<T>(x.size(), x.data()));
+        PYBIND11_OVERRIDE_PURE(double, P, evaluate, py::cast(x));
     }
 
     [[nodiscard]] std::vector<T> transform_variables(std::vector<T> x) override
