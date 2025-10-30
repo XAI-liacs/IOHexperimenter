@@ -5,13 +5,17 @@ The :meth:`ioh.Experiment.publish` helper streamlines turning an experiment run
 into a shareable Zenodo deposit. After running an experiment, calling
 ``publish`` will:
 
-* regenerate the ``ioh_data.zip`` archive with an up-to-date ``README.md``
+* generate the ``ioh_data.zip`` archive with an up-to-date ``README.md``
   describing the algorithm, problems, instances, dimensions, repetitions and
   optional evaluation budget;
 * serialise the algorithm instance with :mod:`cloudpickle` so it can be
   restored when reproducing the experiment; and
 * upload the archive, README and algorithm bundle to Zenodo using their REST
   API.
+
+> [!IMPORTANT] You need a Zenodo access token with appropriate permissions to upload
+> deposits. You can create and manage your tokens in your Zenodo account
+> settings. See https://zenodo.org/account/settings/applications/tokens/new/
 
 Example usage::
 

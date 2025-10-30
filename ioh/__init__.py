@@ -659,11 +659,11 @@ class Experiment:
         content = textwrap.dedent(
             f"""
             # {title}
-
+            
             {description}
-
+            
             ## Experiment configuration
-
+            
             - **Algorithm**: {algorithm_name}
             - **Problem class**: {self.problem_class.name}
             - **Function IDs**: {self.fids}
@@ -671,24 +671,24 @@ class Experiment:
             - **Dimensions**: {self.dims}
             - **Repetitions**: {self.reps}
             - **Budget**: {budget_text}
-
+            
             ### Problem details
-
+            
             {problem_section}
-
+            
             ## Contents
-
+            
             - Experimental logs located in `{os.path.basename(self.logger_root)}`.
             - `README.md` (this file).
-
+            
             ## Directions
-
+            
             1. Unzip `ioh_data.zip` (or the generated archive) to access the raw logs.
             2. Review the `.json`/`.info` files for scenario metadata and `.dat` files for evaluation traces.
             3. Use the reproduction snippet below to re-run the experiment.
-
+            
             ## Reproducing the results
-
+            
             ```python
             {reproduction_hint}
             ```
